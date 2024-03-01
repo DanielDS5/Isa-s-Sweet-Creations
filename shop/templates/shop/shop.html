@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="float-right">
+        {% if request.user.is_authenticated %}
+            {% include "cart/cart.html" %}
+        {% else %}
+            <div class="alert alert-danger text-center">Debes hacer login para comprar</div>
+        {% endif %}
+    </div>
+    <div class="row">
+
+        {% for i in products %}
+
+            <div class="col-md-4">
+                <div class="card" style="margin: 5px 5px;">
+                    <img src="{{i.image.url}}" class="card-img-top">
+                    <div class="card-body" style="text-align: center">
+                        <h5 class="card-title">{{i.name}}</h5>
+                        <p class="card-text">{{i.price}} cup</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="{% url 'cart:add' i.id %}" class="btn btn-success"> Agregar al Carro </a>
+                    </div>
+                 </div>
+            </div>
+
+        {% endfor %}
+
+    </div>    
+</div>
+
+{% endblock content %}
