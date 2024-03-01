@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for i in cakes %}
+    <!-- Heading -->
+    <section class="page-section clearfix">
+        <div class="container">
+            <div class="intro">
+                <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{i.image.url}}" alt="">
+                <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-upper">{{i.name}}</span>
+                        <span class="section-heading-lower" style="font-size: 2rem;">{{i.description}}</span>
+                        <p class="section-heading-lower"> {{i.price}}</p>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div><p></p></div>
+{% endfor %}
+{% endblock content %}
