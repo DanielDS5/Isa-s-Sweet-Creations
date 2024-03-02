@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="containerForm">
+
+    {% if "valid" in request.GET%}
+        <p style="margin: 20px auto; color: white; text-align: center;">Hemos recibido tu email</p>
+    {% elif "invalid" in request.GET%}
+        <p style="margin: 20px auto; color: white; text-align: center;">Ha ocurrido un error</p>
+    {% endif %}
+    <form action="" method="POST" style="text-align: center ;">
+        {% csrf_token %}
+        <table style="margin: 20px auto; color: white;">{{form.as_table}}</table>
+        <input type="submit" value="Enviar" style="width: 150;">
+    </form>
+</div>
+{% endblock content %}
